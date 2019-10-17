@@ -1,0 +1,125 @@
+doctype html
+html
+  head
+    title #{title}
+    link(rel="stylesheet",href="https://fonts.googleapis.com/icon?family=Material+Icons")
+    link(rel="stylesheet",href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css")
+    link(rel="stylesheet",href="/css/style.css")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+  body
+    div(class="fixed-action-btn")
+      a(class="btn-floating btn-large red")
+        i(class="large material-icons") more_vert
+      ul
+        li
+          a(class="btn-floating red sidenav-trigger" data-target="slide-out")
+            i(class="material-icons") settings
+        li
+          a(class="btn-floating blue modal-trigger" data-target="helpmodal")
+            i(class="material-icons") help_outline
+    div(id="helpmodal" class="modal")
+      div(class="modal-content")
+        h5 Titles Quickstart Guide
+        p To disable/enable ALL titles, click the "Titles: ON/OFF" button at the top [NOTE! This deletes the entire queue!]
+        p To disable/enable SPECIFIC titles:
+          ul
+            li <i class="material-icons tiny">looks_one</i> Click the [<i class="material-icons tiny">more_vert</i>] MENU button in the bottom right
+            li <i class="material-icons tiny">looks_two</i> Click the [<i class="material-icons tiny">settings</i>] SETTINGS button
+            li <i class="material-icons tiny">looks_3</i> Toggle the checkbox to enable/disable a specific title
+        p To confer a title, click the [<i class="material-icons tiny">add_box</i>] CONFER icon next to the player's name. Conferring a title will change the icon to a [<i class="material-icons tiny">done_outline</i>] CHECK icon, indicating the player has received the title.
+        p To revoke a title, click the [<i class="material-icons tiny">done_outline</i>] CHECK icon next to the player's name.
+        p To copy a players name, simply click on their name. You can then paste it into the game (using CTRL+V)
+        p To delete a player from the queue, click the [<i class="material-icons tiny">highlight_off</i>] CANCEL icon next to the player's name.
+        p You can delete a player while conferred
+      div(class="modal-footer")
+        a(href="#!" class="modal-close btn-flat") CLOSE
+    main
+      block header
+        header.header
+          img(src="/img/header_bg.png")
+          button(class="right btn darken-1" href="#" id="activatebtn") 
+            span(id="availability") TITLES:NULL
+            i(class="material-icons right") power_settings_new
+        ul(id="slide-out" class="sidenav")
+          li
+            div(class="user-view")
+              form(action="#")
+                p
+                  label
+                    input(type="checkbox" class="filled-in" id="chkBuilder")
+                    span Chief Builder
+                p
+                  label
+                    input(type="checkbox" class="filled-in" id="chkMaester")
+                    span Grand Maester
+                p
+                  label
+                    input(type="checkbox" class="filled-in" id="chkShips")
+                    span Master of Ships
+                p
+                  label
+                    input(type="checkbox" class="filled-in" id="chkLaws")
+                    span Master of Laws
+                p
+                  label
+                    input(type="checkbox" class="filled-in" id="chkDevout")
+                    span Most Devout
+                p
+                  label
+                    input(type="checkbox" class="filled-in" id="chkWhisperers")
+                    span Master of Whisperers
+                p
+                  label
+                    input(type="checkbox" class="filled-in" id="chkCommander")
+                    span Lord Commander
+                p
+                  label
+                    input(type="checkbox" class="filled-in" id="chkCoin")
+                    span Master of Coin
+                p
+                  label
+                    input(type="checkbox" class="filled-in" id="chkHand")
+                    span Hand of the King
+                button(class="center btn red darken-1" href="#" id="clearQueue") CLEAR QUEUE(S)
+      div(class="container")
+        div(class="row")
+          div(class="col s12")
+            form(action="#" id="msgForm")
+              div(class="input-field")
+                i(class="material-icons prefix") chat
+                input(type="text" id="comMessage" name="comMessage" placeholder="Send a Message to Discord Channel")
+        div(class="row")
+          div(class="col s4")
+            ul(class="collection with-header" id="builder_queue")
+              li(class="collection-header")
+          div(class="col s4")
+            ul(class="collection with-header" id="maester_queue")
+              li(class="collection-header")
+          div(class="col s4")
+            ul(class="collection with-header" id="ships_queue")
+              li(class="collection-header")
+        div(class="row")
+          div(class="col s4")
+            ul(class="collection with-header" id="laws_queue")
+              li(class="collection-header")
+          div(class="col s4")
+            ul(class="collection with-header" id="devout_queue")
+              li(class="collection-header")
+          div(class="col s4")
+            ul(class="collection with-header" id="whisperers_queue")
+              li(class="collection-header")
+        div(class="row")
+          div(class="col s4")
+            ul(class="collection with-header" id="coin_queue")
+              li(class="collection-header")
+          div(class="col s4")
+            ul(class="collection with-header" id="lordcommander_queue")
+              li(class="collection-header")
+          div(class="col s4")
+            ul(class="collection with-header" id="hand_queue")
+              li(class="collection-header")
+    script(src="https://www.gstatic.com/firebasejs/6.4.0/firebase-app.js")
+    script(src="https://www.gstatic.com/firebasejs/6.4.0/firebase-firestore.js")
+    script(src="https://code.jquery.com/jquery-3.4.1.min.js",integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=",crossorigin="anonymous")
+    script(src="/js/materialize.js")
+    script(src="/js/handler.js")

@@ -1,0 +1,55 @@
+{
+    "version":  [
+        "ProtocolBot v0.6 [BETA]"
+    ],
+    "about":    [
+        "ProtocolBot created by **(k12)[FDN]Hodor xD** :door:"
+    ],
+    "commands":     [
+        "```css",
+        "READ FIRST!===================================================",
+        "1. When you are done with the title, you MUST type !done",
+        "2. You (and your alt/other player) can only be in one queue at a time",
+        " *** MAKE SURE YOUR NAME OR YOUR ALT'S NAME IS SPELLED CORRECTLY ***",
+        "3. Do not spam commands",
+        "TO REQUEST A TITLE============================================" ,
+        " !title <title_name>" ,
+        " !title Builder            requests Chief Builder [+10% Building Speed]",
+        " !title Maester            requests Grand Maester [+15% Research Speed]",
+        " !title Ships              requests Master of Ships [+20% Marching Speed, +10% Gathering Speed]",
+        " !title Whisperers         requests Master of Whisperers [+5% Total Defense, +5% Training Speed]",
+        "TO REQUEST A TITLE FOR ANOTHER PLAYER / ALT==================" ,
+        " !title <title_name> <player_name>" ,
+        "NOTE: <player_name> must match EXACTLY with the in-game name",
+        "Example: !title Ships FreezeLovesCrocs",
+        "*** You do NOT need to specify the Alliance Tag ***",
+        "VIEWING THE QUEUE============================================",
+        " !queue" ,
+        "LEAVING THE QUEUE============================================",
+        " !done",
+        "```"
+    ],
+    "changelog":[
+        "```css",
+        "CHANGES 08.27.2019 (v0.6)===============================",
+        " - [CHANGED] Optimized the !queue command: faster/more reliable",
+        " - [CHANGED] Moved the URL handler out of root (now /titles)",
+        "CHANGES 08.26.2019 (v0.5)===============================",
+        " - [FIXED] Queue order (I think)",
+        " - [ADDED] Responses for actions",
+        "CHANGES 08.25.2019 (v0.4)===============================",
+        " - [ADDED] !queue feature",
+        " - [ADDED] Ability to copy a player name to clipboard by clicking on it",
+        " - [ADDED] Ability to Revoke/Unconfer",
+        "CHANGES 08.24.2019 (v0.3)===============================",
+        " - [ADDED] Help section",
+        " - [CHANGED] Icons for Confer/Revoke",
+        " - [ADDED] Delete icon",
+        " - [UPDATED] The UI a bit",
+        "Hodor's TO-DO List======================================",
+        " - [ADD] ability to request on another player's behalf (medium priority)",
+        " - [ADD] Show a timer (low priority)",
+        " - [ADD] UI Password protection",
+        "```" 
+    ]
+}

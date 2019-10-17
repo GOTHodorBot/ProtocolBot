@@ -1,0 +1,411 @@
+
+{
+  "header": {
+    "reportVersion": 1,
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20190819.115525.18568.0.001.json",
+    "dumpEventTime": "2019-08-19T11:55:25Z",
+    "dumpEventTimeStamp": "1566230125910",
+    "processId": 18568,
+    "cwd": "D:\\NodeApps\\ProtocolBot",
+    "commandLine": [
+      "node",
+      "C:\\Users\\brand\\AppData\\Roaming\\npm\\node_modules\\pm2\\lib\\ProcessContainerFork.js"
+    ],
+    "nodejsVersion": "v12.7.0",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "win32",
+    "componentVersions": {
+      "node": "12.7.0",
+      "v8": "7.5.288.22-node.16",
+      "uv": "1.30.1",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "72",
+      "nghttp2": "1.39.1",
+      "napi": "4",
+      "llhttp": "1.1.4",
+      "http_parser": "2.8.0",
+      "openssl": "1.1.1c",
+      "cldr": "35.1",
+      "icu": "64.2",
+      "tz": "2019a",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "headersUrl": "https://nodejs.org/download/release/v12.7.0/node-v12.7.0-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v12.7.0/node-v12.7.0.tar.gz",
+      "libUrl": "https://nodejs.org/download/release/v12.7.0/win-x64/node.lib"
+    },
+    "osName": "Windows_NT",
+    "osRelease": "10.0.17134",
+    "osVersion": "Windows 10 Pro",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "Intel(R) Core(TM) i7-6820HQ CPU @ 2.70GHz",
+        "speed": 2712,
+        "user": 177836968,
+        "nice": 0,
+        "sys": 96393531,
+        "idle": 749564484,
+        "irq": 31589187
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-6820HQ CPU @ 2.70GHz",
+        "speed": 2712,
+        "user": 177836968,
+        "nice": 0,
+        "sys": 96393531,
+        "idle": 749564484,
+        "irq": 31589187
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-6820HQ CPU @ 2.70GHz",
+        "speed": 2712,
+        "user": 177836968,
+        "nice": 0,
+        "sys": 96393531,
+        "idle": 749564484,
+        "irq": 31589187
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-6820HQ CPU @ 2.70GHz",
+        "speed": 2712,
+        "user": 177836968,
+        "nice": 0,
+        "sys": 96393531,
+        "idle": 749564484,
+        "irq": 31589187
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-6820HQ CPU @ 2.70GHz",
+        "speed": 2712,
+        "user": 177836968,
+        "nice": 0,
+        "sys": 96393531,
+        "idle": 749564484,
+        "irq": 31589187
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-6820HQ CPU @ 2.70GHz",
+        "speed": 2712,
+        "user": 177836968,
+        "nice": 0,
+        "sys": 96393531,
+        "idle": 749564484,
+        "irq": 31589187
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-6820HQ CPU @ 2.70GHz",
+        "speed": 2712,
+        "user": 177836968,
+        "nice": 0,
+        "sys": 96393531,
+        "idle": 749564484,
+        "irq": 31589187
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-6820HQ CPU @ 2.70GHz",
+        "speed": 2712,
+        "user": 177836968,
+        "nice": 0,
+        "sys": 96393531,
+        "idle": 749564484,
+        "irq": 31589187
+      }
+    ],
+    "host": "WolfStudio"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x00007ff755ba6b89",
+      "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+10841"
+    },
+    {
+      "pc": "0x00007ff755baa4fc",
+      "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+25548"
+    },
+    {
+      "pc": "0x00007ff755ba94a8",
+      "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+21368"
+    },
+    {
+      "pc": "0x00007ff755c933db",
+      "symbol": "v8::base::CPU::has_sse+37691"
+    },
+    {
+      "pc": "0x00007ff75647a3de",
+      "symbol": "v8::Isolate::ReportExternalAllocationLimitReached+94"
+    },
+    {
+      "pc": "0x00007ff75646272a",
+      "symbol": "v8::SharedArrayBuffer::Externalize+842"
+    },
+    {
+      "pc": "0x00007ff7562f3e3c",
+      "symbol": "v8::internal::Heap::EphemeronKeyWriteBarrierFromCode+1436"
+    },
+    {
+      "pc": "0x00007ff7562fbd5f",
+      "symbol": "v8::internal::Heap::OldGenerationSizeOfObjects+4879"
+    },
+    {
+      "pc": "0x00007ff7562f2003",
+      "symbol": "v8::internal::Heap::CollectGarbage+1235"
+    },
+    {
+      "pc": "0x00007ff7562f0894",
+      "symbol": "v8::internal::Heap::AddRetainedMap+2292"
+    },
+    {
+      "pc": "0x00007ff75630f375",
+      "symbol": "v8::internal::Factory::NewFillerObject+53"
+    },
+    {
+      "pc": "0x00007ff7560c55a3",
+      "symbol": "v8::internal::interpreter::JumpTableTargetOffsets::iterator::operator=+3427"
+    },
+    {
+      "pc": "0x00007ff75689982d",
+      "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+614605"
+    },
+    {
+      "pc": "0x0000009f234f50c9",
+      "symbol": ""
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 2150891520,
+    "totalCommittedMemory": 2150891520,
+    "usedMemory": 2142035592,
+    "availableMemory": 51379024,
+    "memoryLimit": 2197815296,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 262144,
+        "committedMemory": 262144,
+        "capacity": 261832,
+        "used": 31960,
+        "available": 229872
+      },
+      "new_space": {
+        "memorySize": 4194304,
+        "committedMemory": 4194304,
+        "capacity": 2094656,
+        "used": 171080,
+        "available": 1923576
+      },
+      "old_space": {
+        "memorySize": 2141073408,
+        "committedMemory": 2141073408,
+        "capacity": 2137237576,
+        "used": 2137030432,
+        "available": 207144
+      },
+      "code_space": {
+        "memorySize": 425984,
+        "committedMemory": 425984,
+        "capacity": 353664,
+        "used": 353664,
+        "available": 0
+      },
+      "map_space": {
+        "memorySize": 1314816,
+        "committedMemory": 1314816,
+        "capacity": 890240,
+        "used": 890240,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 3571712,
+        "committedMemory": 3571712,
+        "capacity": 3554760,
+        "used": 3554760,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 49152,
+        "committedMemory": 49152,
+        "capacity": 3456,
+        "used": 3456,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 2094656,
+        "used": 0,
+        "available": 2094656
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 40.703,
+    "kernelCpuSeconds": 2.046,
+    "cpuConsumptionPercent": 112.497,
+    "maxRss": 2241597440,
+    "pageFaults": {
+      "IORequired": 621137,
+      "IONotRequired": 0
+    },
+    "fsActivity": {
+      "reads": 706,
+      "writes": 132
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "=C:": "C:\\",
+    "ALLUSERSPROFILE": "C:\\ProgramData",
+    "APPDATA": "C:\\Users\\brand\\AppData\\Roaming",
+    "automation": "true",
+    "autorestart": "true",
+    "axm_actions": "",
+    "axm_dynamic": "[object Object]",
+    "axm_monitor": "[object Object]",
+    "axm_options": "[object Object]",
+    "ChocolateyInstall": "C:\\ProgramData\\chocolatey",
+    "ChocolateyLastPathUpdate": "132092671684767100",
+    "CommonProgramFiles": "C:\\Program Files\\Common Files",
+    "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files",
+    "CommonProgramW6432": "C:\\Program Files\\Common Files",
+    "COMPUTERNAME": "WOLFSTUDIO",
+    "ComSpec": "C:\\WINDOWS\\system32\\cmd.exe",
+    "created_at": "1566230087305",
+    "DriverData": "C:\\Windows\\System32\\Drivers\\DriverData",
+    "env": "[object Object]",
+    "exec_interpreter": "node",
+    "exec_mode": "fork_mode",
+    "exit_code": "1",
+    "HOMEDRIVE": "C:",
+    "HOMEPATH": "\\Users\\brand",
+    "instances": "1",
+    "instance_var": "NODE_APP_INSTANCE",
+    "kill_retry_time": "100",
+    "km_link": "false",
+    "LANG": "en_US.UTF-8",
+    "LOCALAPPDATA": "C:\\Users\\brand\\AppData\\Local",
+    "LOGONSERVER": "\\\\WOLFSTUDIO",
+    "merge_logs": "true",
+    "MOZ_PLUGIN_PATH": "C:\\PROGRAM FILES (X86)\\FOXIT SOFTWARE\\FOXIT READER\\plugins\\",
+    "MSMPI_BIN": "C:\\Program Files\\Microsoft MPI\\Bin\\",
+    "name": "index",
+    "NODE_APP_INSTANCE": "1",
+    "node_args": "",
+    "node_version": "12.7.0",
+    "NUMBER_OF_PROCESSORS": "8",
+    "OneDrive": "D:\\OneDrive",
+    "OneDriveConsumer": "D:\\OneDrive",
+    "OS": "Windows_NT",
+    "Path": "C:\\Python27\\;C:\\Python27\\Scripts;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files\\Microsoft MPI\\Bin\\;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;D:\\Applications\\Microsoft VS Code\\bin;C:\\Program Files\\dotnet\\;C:\\Program Files\\Microsoft SQL Server\\130\\Tools\\Binn\\;D:\\Applications\\Git\\cmd;C:\\Program Files (x86)\\Microsoft SQL Server\\Client SDK\\ODBC\\130\\Tools\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\140\\Tools\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\140\\DTS\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\140\\Tools\\Binn\\ManagementStudio\\;D:\\DevApps\\nodejs\\;C:\\ProgramData\\chocolatey\\bin;C:\\Users\\brand\\AppData\\Roaming\\npm;C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\;D:\\DevApps\\heroku\\bin;D:\\DevApps\\gcloudsdk\\google-cloud-sdk\\bin",
+    "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JSE;.WSF;.WSH;.MSC",
+    "PM2_HOME": "C:\\Users\\brand\\.pm2",
+    "PM2_USAGE": "CLI",
+    "pmx": "true",
+    "pm_cwd": "D:\\NodeApps\\ProtocolBot",
+    "pm_err_log_path": "C:\\Users\\brand\\.pm2\\logs\\index-error.log",
+    "pm_exec_path": "D:\\NodeApps\\ProtocolBot\\index.js",
+    "pm_id": "2",
+    "pm_out_log_path": "C:\\Users\\brand\\.pm2\\logs\\index-out.log",
+    "pm_pid_path": "C:\\Users\\brand\\.pm2\\pids\\index-2.pid",
+    "pm_uptime": "1566230087672",
+    "prev_restart_delay": "0",
+    "PROCESSOR_ARCHITECTURE": "AMD64",
+    "PROCESSOR_IDENTIFIER": "Intel64 Family 6 Model 94 Stepping 3, GenuineIntel",
+    "PROCESSOR_LEVEL": "6",
+    "PROCESSOR_REVISION": "5e03",
+    "ProgramData": "C:\\ProgramData",
+    "ProgramFiles": "C:\\Program Files",
+    "ProgramFiles(x86)": "C:\\Program Files (x86)",
+    "ProgramW6432": "C:\\Program Files",
+    "PROMPT": "$P$G",
+    "PSModulePath": ";D:\\DevApps\\gcloudsdk\\google-cloud-sdk\\platform\\PowerShell",
+    "PUBLIC": "C:\\Users\\Public",
+    "restart_time": "577",
+    "SESSIONNAME": "Console",
+    "status": "launching",
+    "SystemDrive": "C:",
+    "SystemRoot": "C:\\WINDOWS",
+    "TEMP": "C:\\Users\\brand\\AppData\\Local\\Temp",
+    "TERM_PROGRAM": "vscode",
+    "TERM_PROGRAM_VERSION": "1.36.1",
+    "TMP": "C:\\Users\\brand\\AppData\\Local\\Temp",
+    "treekill": "true",
+    "unique_id": "0b619b17-2d5a-4f71-80d6-9287c61061b9",
+    "unstable_restarts": "1",
+    "USERDOMAIN": "WOLFSTUDIO",
+    "USERDOMAIN_ROAMINGPROFILE": "WOLFSTUDIO",
+    "username": "brand",
+    "USERNAME": "brand",
+    "USERPROFILE": "C:\\Users\\brand",
+    "VBOX_MSI_INSTALL_PATH": "C:\\Program Files\\Oracle\\VirtualBox\\",
+    "version": "0.0.1",
+    "versioning": "null",
+    "vizion": "true",
+    "vizion_running": "true",
+    "VS150ENTCOMNTOOLS": "D:\\Applications\\VisualStudio\\IDE\\Common7\\Tools\\",
+    "watch": "true",
+    "windir": "C:\\WINDOWS",
+    "windowsHide": "true"
+  },
+  "sharedObjects": [
+    "D:\\DevApps\\nodejs\\node.exe",
+    "C:\\WINDOWS\\SYSTEM32\\ntdll.dll",
+    "C:\\WINDOWS\\System32\\KERNEL32.DLL",
+    "C:\\WINDOWS\\System32\\KERNELBASE.dll",
+    "C:\\WINDOWS\\System32\\WS2_32.dll",
+    "C:\\WINDOWS\\System32\\RPCRT4.dll",
+    "C:\\WINDOWS\\System32\\ADVAPI32.dll",
+    "C:\\WINDOWS\\System32\\msvcrt.dll",
+    "C:\\WINDOWS\\System32\\sechost.dll",
+    "C:\\WINDOWS\\System32\\USER32.dll",
+    "C:\\WINDOWS\\SYSTEM32\\dbghelp.dll",
+    "C:\\WINDOWS\\System32\\win32u.dll",
+    "C:\\WINDOWS\\System32\\GDI32.dll",
+    "C:\\WINDOWS\\System32\\ucrtbase.dll",
+    "C:\\WINDOWS\\System32\\gdi32full.dll",
+    "C:\\WINDOWS\\System32\\msvcp_win.dll",
+    "C:\\WINDOWS\\System32\\PSAPI.DLL",
+    "C:\\WINDOWS\\System32\\CRYPT32.dll",
+    "C:\\WINDOWS\\System32\\MSASN1.dll",
+    "C:\\WINDOWS\\SYSTEM32\\IPHLPAPI.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\USERENV.dll",
+    "C:\\WINDOWS\\SYSTEM32\\WINMM.dll",
+    "C:\\WINDOWS\\SYSTEM32\\bcrypt.dll",
+    "C:\\WINDOWS\\System32\\profapi.dll",
+    "C:\\WINDOWS\\SYSTEM32\\WINMMBASE.dll",
+    "C:\\WINDOWS\\System32\\cfgmgr32.dll",
+    "C:\\WINDOWS\\System32\\IMM32.DLL",
+    "C:\\WINDOWS\\System32\\powrprof.dll",
+    "C:\\WINDOWS\\system32\\uxtheme.dll",
+    "C:\\WINDOWS\\System32\\combase.dll",
+    "C:\\WINDOWS\\System32\\bcryptPrimitives.dll",
+    "C:\\WINDOWS\\system32\\mswsock.dll",
+    "C:\\WINDOWS\\System32\\kernel.appcore.dll",
+    "\\\\?\\D:\\NodeApps\\ProtocolBot\\node_modules\\grpc\\src\\node\\extension_binary\\node-v72-win32-x64-unknown\\grpc_node.node",
+    "C:\\WINDOWS\\SYSTEM32\\CRYPTBASE.DLL",
+    "C:\\WINDOWS\\System32\\NSI.dll",
+    "C:\\WINDOWS\\SYSTEM32\\dhcpcsvc6.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\dhcpcsvc.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\DNSAPI.dll",
+    "C:\\Windows\\System32\\rasadhlp.dll",
+    "C:\\WINDOWS\\System32\\fwpuclnt.dll",
+    "C:\\WINDOWS\\system32\\napinsp.dll",
+    "C:\\WINDOWS\\system32\\pnrpnsp.dll",
+    "C:\\WINDOWS\\system32\\NLAapi.dll",
+    "C:\\WINDOWS\\System32\\winrnr.dll",
+    "C:\\WINDOWS\\System32\\wshbth.dll"
+  ]
+}

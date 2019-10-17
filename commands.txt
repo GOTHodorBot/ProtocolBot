@@ -1,0 +1,21 @@
+USAGE
+!title <TitleName>
+    Check if available
+    Check to make sure not already in a queue
+    Add to queue
+    Non-App: Vamp Gives Title
+    Vamp Clicks Name (Set to Conferred)
+    - Starred
+    - Timer
+
+!done (Marks as Done)
+
+
+
+
+TODO
+Requesting on behalf of someone else (how to mark it done?)
+
+USE CASES
+What if I confer the wrong person?
+

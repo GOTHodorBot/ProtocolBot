@@ -1,0 +1,138 @@
+html {
+    box-sizing: border-box;
+  }
+  
+*, *::before, *::after {
+    box-sizing: inherit; /* [1] */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif; /* [2] */
+    background-color: #181716;
+    color:#fcd883;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #242321;
+    margin-bottom: 10px;
+    border-bottom: 2px dashed #413f3c;
+}
+
+.modal {
+    border: 1px dotted #fcd883;
+}
+.modal .modal-content {
+    background-color: #242321;  
+}
+.modal .modal-footer {
+    background-color: #181716;
+}
+.modal .modal-footer a {
+    background-color: #413f3c;
+    color: #fcd883;
+}
+
+@-webkit-keyframes greenPulse {
+  from { background-color: #749a02; -webkit-box-shadow: 0 0 9px #333; }
+  50% { background-color: #91bd09; -webkit-box-shadow: 0 0 18px #91bd09; }
+  to { background-color: #749a02; -webkit-box-shadow: 0 0 9px #333; }
+}
+
+button.pulse {
+    -webkit-animation-name: greenPulse;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: infinite;
+  }
+  
+span.badge.new {
+    color: #242321;
+    font-weight: bold;
+}
+
+span.linked {
+    color: #fcd883;
+    text-decoration: underline;
+}
+
+span.linked:hover {
+    cursor: copy;
+}
+.collection {
+    border: 1px solid #fcd883;
+}
+
+.collection a.collection-item {
+    color: #dcdcc3;
+}
+
+.collection .collection-item {
+    background:  #242321;
+}
+
+#comMessage {
+    color: #dcdcc3; 
+}
+
+.collection.with-header .collection-header {
+    background-color: #181716;
+    background-repeat: no-repeat;
+    border: none;
+    min-height: 60px;
+    border-bottom: 2px dashed #fcd883;
+}
+
+.collection a.collection-item:not(.active):hover {
+    background-color:  #6d0000;
+    color: #fff;
+}
+
+.secondary-content {
+    color: #fcd883;
+}
+.toast {
+    background-color: #fcd883;
+    color: #242321;
+    font-weight: bold;
+}
+
+#builder_queue .collection-header{  
+    background-image: url('/img/builder_bg.png');
+}   
+
+#whisperers_queue .collection-header{
+    background-image: url('/img/whisperers_bg.png');
+}
+
+#maester_queue .collection-header{
+    background-image: url('/img/maester_bg.png');
+}
+
+#ships_queue .collection-header{
+    background-image: url('/img/ships_bg.png');
+}
+
+#laws_queue .collection-header{
+    background-image: url('/img/laws_bg.png');
+}
+
+#devout_queue .collection-header{
+    background-image: url('/img/devout_bg.png');
+}
+
+#coin_queue .collection-header{
+    background-image: url('/img/coin_bg.png');
+}
+
+#lordcommander_queue .collection-header{
+    background-image: url('/img/lordcommander_bg.png');
+}
+
+#hand_queue .collection-header{
+    background-image: url('/img/hand_bg.png');
+}
