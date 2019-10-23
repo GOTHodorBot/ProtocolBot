@@ -3,6 +3,9 @@ const Discord = require('discord.js');
 const firebase = require('firebase');
 const express = require('express');
 const bodyParser = require('body-parser')
+const os = require('os');
+const closeimg = "https://media.giphy.com/media/L464aJ9EO5ziifAMDD/giphy.gif";
+const openimg = "https://thumbs.gfycat.com/ElementaryTerrificAmericanalligator-size_restricted.gif";
 
 const client = new Discord.Client();
 const myembed = new Discord.RichEmbed();
@@ -11,8 +14,15 @@ app.set('view engine','pug');
 app.use(express.static(__dirname + '/public'));
 var log = console.log;
 const arrQueues = ['builder','maester','ships','devout','whisperers','laws','hand','lordcommander','coin']
-const defaultChannel = "kingdom-title-requests"
-const evryone = "everyone" //change this to @everyone to enable the notifications
+//K12
+const defaultChannel = '584661842677465090'
+//MYSERVER
+//const defaultChannel = '634021945226166302';
+//UBERDRAGON'S SERVER
+//const defaultChannel = '636382407712440332';
+
+
+const evryone = "@everyone" //change this to @everyone to enable the notifications
 //JSON Components
 const help = require('./help.json')
 const auth = require('./auth.json')
@@ -76,41 +86,36 @@ app.get('/titles/', (req,res) => {
 })
 
 app.post('/titles/sendmsg', (req,res) => {
-    var sendthis = req.body.msgtosend;
-    client.guilds.forEach(guild => {
-        guild.channels.find(t => t.name == defaultChannel).send(sendthis);
-    })
+    client.channels.get(defaultChannel).send(req.body.msgtosend);
+    res.end('{"success" : "Updated Successfully", "status" : 200}');
 })
 
 app.get('/titles/status/:onoroff', (req,res) => {
     if(req.params.onoroff == "on") {
-        client.guilds.forEach(guild => {
-            guild.channels.find(t => t.name == defaultChannel).send(evryone + " Titles are now **AVAILABLE**! (use `!help`)")
-            firedb.collection("settings").doc("general").update({available:true})
-        })
+        client.channels.get(defaultChannel).send(evryone + " Titles are now **AVAILABLE**! (use `!help`)")
+        client.channels.get(defaultChannel).send({embed: {image: {url: openimg}}})
+        firedb.collection("settings").doc("general").update({available:true})
     } else if(req.params.onoroff == "off") {
-        client.guilds.forEach(guild => {
-            guild.channels.find(t => t.name == defaultChannel).send(evryone + " Titles are now **UNAVAILABLE**!")
-            firedb.collection("settings").doc("general").update({available:false})
-        })
+        client.channels.get(defaultChannel).send(evryone + " Titles are now **UNAVAILABLE**!")
+        client.channels.get(defaultChannel).send({embed: {image: {url: closeimg}}})
+        firedb.collection("settings").doc("general").update({available:false})
     }
-    res.statusCode = 201;
+    res.end('{"success" : "Updated Successfully", "status" : 200}');
 })
 
 //Conferring a Title
 app.get('/titles/confer/:recip/title/:titleName', (req,res) => {
-    client.guilds.forEach(guild => {
-        guild.channels.find(t => t.name == defaultChannel).send("<@" + req.params.recip + "> : " + translate[req.params.titleName] + " has been conferred.");
-        res.statusCode = 201;
-    })
+    client.channels.get(defaultChannel).send("<@" + req.params.recip + "> : " + translate[req.params.titleName] + " has been conferred.");
+    res.end('{"success" : "Updated Successfully", "status" : 200}');
+    console.log('Conferred!');
 })
 
 app.get('/titles/unconfer/:recip/title/:titleName', (req,res) => {
-    client.guilds.forEach(guild => {
-        guild.channels.find(t => t.name == defaultChannel).send("<@" + req.params.recip + "> : " + translate[req.params.titleName] + " has been revoked.");
-        res.statusCode = 201;
-    })
+    client.channels.get(defaultChannel).send("<@" + req.params.recip + "> : " + translate[req.params.titleName] + " has been revoked.");
+    res.end('{"success" : "Updated Successfully", "status" : 200}');
+    console.log('Revoked!');
 })
+
 const server = app.listen(3000, () => {
     log(`Express running → PORT ${server.address().port}`);
 })
@@ -142,15 +147,33 @@ function showQueue(msg) {
             .setColor(16767619)
             .setDescription('Use `!help` for more information')
             .setFooter("ProtocolBot by (k12)[FDH]Hodor xD","https://cdn.discordapp.com/app-icons/607018430721425445/3841c888889ac9ae194280b0a9db348d.png")
-            .addField("Chief Builder", (currQueue['builder'].length > 0) ? currQueue['builder'].join('\n') : '[EMPTY]', true)
-            .addField("Grand Maester", (currQueue['maester'].length > 0) ? currQueue['maester'].join('\n') : '[EMPTY]', true)
-            .addField("Master of Ships:", (currQueue['builder'].ships > 0) ? currQueue['builder'].join('\n') : '[EMPTY]', true)
-            .addField("Master of Laws:", (currQueue['laws'].length > 0) ? currQueue['laws'].join('\n') : '[EMPTY]', true)
-            .addField("Most Devout:", (currQueue['devout'].length > 0) ? currQueue['devout'].join('\n') : '[EMPTY]', true)
-            .addField("Master of Whisperers:", (currQueue['whisperers'].length > 0) ? currQueue['whisperers'].join('\n') : '[EMPTY]', true)
-            .addField("Master of Coin:", (currQueue['coin'].length > 0) ? currQueue['coin'].join('\n') : '[EMPTY]', true)
-            .addField("Lord Commander:", (currQueue['lordcommander'].length > 0) ? currQueue['lordcommander'].join('\n') : '[EMPTY]', true)
-            .addField("Hand of the King:", (currQueue['hand'].length > 0) ? currQueue['hand'].join('\n') : '[EMPTY]', true)
+        if(avail['builder']) {
+            embed.addField("Chief Builder", (currQueue['builder'].length > 0) ? currQueue['builder'].join('\n') : '[EMPTY]', true)
+        }
+        if(avail['maester']) {
+            embed.addField("Grand Maester", (currQueue['maester'].length > 0) ? currQueue['maester'].join('\n') : '[EMPTY]', true)
+        }
+        if(avail['ships']) {
+            embed.addField("Master of Ships:", (currQueue['builder'].ships > 0) ? currQueue['builder'].join('\n') : '[EMPTY]', true)
+        }
+        if(avail['laws']) {
+            embed.addField("Master of Laws:", (currQueue['laws'].length > 0) ? currQueue['laws'].join('\n') : '[EMPTY]', true)
+        }
+        if(avail['devout']) {
+            embed.addField("Most Devout:", (currQueue['devout'].length > 0) ? currQueue['devout'].join('\n') : '[EMPTY]', true)
+        }
+        if(avail['whisperers']) {
+            embed.addField("Master of Whisperers:", (currQueue['whisperers'].length > 0) ? currQueue['whisperers'].join('\n') : '[EMPTY]', true)
+        }
+        if(avail['coin']) {
+            embed.addField("Master of Coin:", (currQueue['coin'].length > 0) ? currQueue['coin'].join('\n') : '[EMPTY]', true)
+        }
+        if(avail['lordcommander']) {
+            embed.addField("Lord Commander:", (currQueue['lordcommander'].length > 0) ? currQueue['lordcommander'].join('\n') : '[EMPTY]', true)
+        }
+        if(avail['hand']) {
+            embed.addField("Hand of the King:", (currQueue['hand'].length > 0) ? currQueue['hand'].join('\n') : '[EMPTY]', true)
+        }
         msg.channel.send("**K12 Title Queue**", { embed });
     })      
 }
@@ -221,7 +244,7 @@ client.on('message', msg => {
         return;
     }
     */
-    if (msg.channel.name !== defaultChannel) {
+    if (msg.channel.name !== 'kingdom-title-requests') {
         return false;
     }
     if (msg.content.toLowerCase() === "hold the door") {
@@ -239,7 +262,13 @@ client.on('message', msg => {
         //#endregion
         //#region GENERAL COMMANDS
         case "!help":
-            msg.channel.send(help.commands.join('\n'));
+            let helpmsg = help.commands.header.join('\n');
+            if(avail['builder']) {helpmsg = helpmsg + '\n' + help.commands.builder}
+            if(avail['maester']) {helpmsg = helpmsg + '\n' + help.commands.maester}
+            if(avail['ships']) {helpmsg = helpmsg + '\n' + help.commands.ships}
+            if(avail['whisperers']) {helpmsg = helpmsg + '\n' + help.commands.whisperers}
+            helpmsg = helpmsg + '\n' + help.commands.footer.join('\n')
+            msg.channel.send(helpmsg);
             break;
         case "!changelog":
         case "!whatsnew":
@@ -267,9 +296,39 @@ client.on('message', msg => {
         case "!queue":
             showQueue(msg)
             break;
+        case "!myip":
+            var networkInterfaces = os.networkInterfaces()
+            let nonLocalInterfaces = {};
+            for (let inet in networkInterfaces) {
+                let addresses = networkInterfaces[inet];
+                for (let i=0; i<addresses.length; i++) {
+                    let address = addresses[i];
+                    if (!address.internal && address.family == 'IPv4') {
+                        if (!nonLocalInterfaces[inet]) {
+                            nonLocalInterfaces[inet] = [];
+                        }
+                        var myip  = address.address;
+                    }
+                }
+            }
+            console.log(myip);
+            break;
+        case "!testopen":
+            client.channels.get(defaultChannel).send({embed: {image: {url: openimg}}})
+            break;
+        case "!testclose":
+            client.channels.get(defaultChannel).send({embed: {image: {url: closeimg}}})
+        default:
+            logChat(msg)
+            break;
         //#endregion
     }
 });
+//#endregion
+//#region ***************LOG CHAT*****************
+function logChat(msg) {
+
+}
 //#endregion
 //#region ************TITLE COMMANDS**************
 function queueTitle(msg,title,person) { 
@@ -313,7 +372,7 @@ function queueTitle(msg,title,person) {
         case "whispers":
         case "whisperers":
         case "mow":
-            addToQueue(msg,'whisperers');
+            addToQueue(msg,'whisperers',person);
             break;
         case "masteroflaws":
         case "law":
@@ -341,6 +400,9 @@ function queueTitle(msg,title,person) {
 }
 
 function addToQueue(msg,title,person) {
+    //Ignore words in Person
+    var ignorewords = ["pls","please","ty","thx","thanks","thank you"]
+    isignored = (ignorewords.includes(person,0)) ? person = "" : person = person;
     //Check if Already in the Queue
     firedb.collection('queue').where('playerid','==',msg.author.id).get()
         .then(snapshot => {
@@ -403,27 +465,7 @@ firedb.collection("settings")
     .onSnapshot({includeMetadataChanges: true},function(snapshot) {
         snapshot.docChanges().forEach(function(change) {
             if(change.type === "modified") {
-                //Settings have changed (Check GENERAL)
-                if(change.doc.data().available) {
-                    titles_avail = true
-                } else {
-                    titles_avail = false
-                }
-                //Settings have changed (Check TITLEAVAILABLE)
-                /* THIS IS BROKEN
-                //BUILDER
-                if(change.doc.data().builder) {
-                    avail["builder"] = true
-                } else {
-                    avail["builder"] = false
-                }
-                //COIN
-                if(change.doc.data().coin) {
-                    avail["coin"] = true
-                } else {
-                    avail["coin"] = false
-                }
-                */
+                getSettings();
             }
         })
     })
@@ -432,9 +474,9 @@ firedb.collection("settings")
 //PROTOCOLBOT ONLINE
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
-    let channel = client.channels.get(defaultChannel);
     client.user.setActivity('#' + defaultChannel +' | use !help', { type: 'WATCHING' });
     client.users.get("386200837896011776").send("Awaiting Commands");
+    getSettings();
     /*setTimeout((function() {
         client.guilds.forEach(guild => {
             guild.channels.find(t => t.name == 'general').send('ProtocolBot is now online.');
@@ -444,4 +486,3 @@ client.on('ready', () => {
 });
 
 client.login(auth.token);
-getSettings();

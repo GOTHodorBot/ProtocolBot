@@ -15,17 +15,17 @@ module.exports = {
       env_production: {
         NODE_ENV: 'production'
       }
-    }]/*,
+    }],
   
     deploy : {
       production : {
-        user : 'node',
-        host : '212.83.163.1',
+        user : 'GOTHodorBot',
+        host : ['144.172.70.227'],
         ref  : 'origin/master',
-        repo : 'git@github.com:repo.git',
-        path : '/var/www/production',
+        repo : 'git@github.com:GOTHodorBot/ProtocolBot.git',
+        path : '/home/protocolbot',
         'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production'
       }
-    }*/
+    }
   };
   
