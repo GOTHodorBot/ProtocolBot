@@ -15,14 +15,14 @@ app.use(express.static(__dirname + '/public'));
 var log = console.log;
 const arrQueues = ['builder','maester','ships','devout','whisperers','laws','hand','lordcommander','coin']
 //K12
-const defaultChannel = '584661842677465090'
+//const defaultChannel = '584661842677465090'
 //MYSERVER
 //const defaultChannel = '634021945226166302';
 //UBERDRAGON'S SERVER
-//const defaultChannel = '636382407712440332';
+const defaultChannel = '636382407712440332';
 
 
-const evryone = "@everyone" //change this to @everyone to enable the notifications
+const evryone = "@here" //change this to @everyone to enable the notifications
 //JSON Components
 const help = require('./help.json')
 const auth = require('./auth.json')
@@ -116,6 +116,17 @@ app.get('/titles/unconfer/:recip/title/:titleName', (req,res) => {
     console.log('Revoked!');
 })
 
+//Deleting the Queue
+app.get('/delete', (req,res) => {
+    let batchSize = 100;
+    let collectionRef = firedb.collection("queue");
+    let query = collectionRef.orderBy('__name__').limit(batchSize);
+    return new Promise((resolve, reject) => {
+        deleteQueryBatch(firedb, query, batchSize, resolve, reject);
+    });
+    res.statusCode = 201;
+})
+
 const server = app.listen(3000, () => {
     log(`Express running → PORT ${server.address().port}`);
 })
@@ -192,18 +203,6 @@ function leaveQueue(msg) {
             }
         })
 }
-
-
-//Deleting the Queue
-app.get('/delete', (req,res) => {
-    let batchSize = 100;
-    let collectionRef = firedb.collection("queue");
-    let query = collectionRef.orderBy('__name__').limit(batchSize);
-    return new Promise((resolve, reject) => {
-        deleteQueryBatch(firedb, query, batchSize, resolve, reject);
-    });
-    res.statusCode = 201;
-})
 
 function deleteQueryBatch(db, query, batchSize, resolve, reject) {
     query.get()
@@ -283,6 +282,7 @@ client.on('message', msg => {
         //#endregion
         //#region TITLE COMMANDS
         case "!title":
+        case "!t":
             if(titles_avail) {
                 queueTitle(msg,command[1],secondparams);
             } else {
@@ -291,9 +291,11 @@ client.on('message', msg => {
             //queueTitle(msg,command[1])
             break;
         case "!done":
+        case "!d":
             leaveQueue(msg)
             break;
         case "!queue":
+        case "!q":
             showQueue(msg)
             break;
         case "!myip":
@@ -313,11 +315,6 @@ client.on('message', msg => {
             }
             console.log(myip);
             break;
-        case "!testopen":
-            client.channels.get(defaultChannel).send({embed: {image: {url: openimg}}})
-            break;
-        case "!testclose":
-            client.channels.get(defaultChannel).send({embed: {image: {url: closeimg}}})
         default:
             logChat(msg)
             break;
@@ -327,11 +324,16 @@ client.on('message', msg => {
 //#endregion
 //#region ***************LOG CHAT*****************
 function logChat(msg) {
+    //Ignore ProtocolBot Messages
 
 }
 //#endregion
 //#region ************TITLE COMMANDS**************
-function queueTitle(msg,title,person) { 
+function queueTitle(msg,title,person) {
+    if(person.startsWith('@') || person.startsWith('<@')) {
+        msg.reply(":warning: Please do not @ your alt or other player, just use their in-game name.")
+        return;
+    }
     switch(title.toLowerCase()) {
         //#region EasterEgg Titles
         case "king":
@@ -432,9 +434,7 @@ function addToQueue(msg,title,person) {
             } else {
                 snapshot.forEach(doc=>{
                     msg.reply(":warning: You are already in the " + translate[doc.data().title.toLowerCase()] + " queue (" + doc.id + "). Type `!queue` to see the queue or `!done` if you wish to be removed.");
-                })
-                //Is in the Queue
-                
+                })                
                 return;
             }
         })    
